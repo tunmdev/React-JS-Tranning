@@ -1,3 +1,5 @@
+import { useState } from 'react'
+
 import componentsImg from './assets/components.png';
 import { CORE_CONCEPTS } from './data.js';
 
@@ -6,13 +8,13 @@ import CoreConcept from './components/CoreConcept.jsx';
 import TabButton from './components/TabButton.jsx';
 
 function App() {
-  let tabContent = 'Please click a button';
-
+  const [ selectedTopic, setSelectedTopic ] = useState('Please click a button');
 
   function handleSelect(selectedButton) {
-    tabContent = selectedButton
-    console.log(tabContent)
-}
+    setSelectedTopic(selectedButton)
+  }
+
+  console.log('App component executing.')
 
   return (
     <div>
@@ -41,7 +43,7 @@ function App() {
             <TabButton onSelect={() => handleSelect('state')}>State</TabButton>
           </menu>
 
-          { tabContent }
+          { selectedTopic }
 
         </section>
       </main>
